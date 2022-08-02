@@ -3,7 +3,6 @@
 | Column             | Type   | Options                  |
 | nickname           | string | null: false              |
 | email              | string | null: false,unique: true |
-| password           | string | null: false              |
 | encrypted_password | string | null: false              |
 | first_name         | string | null: false              |
 | family_name        | string | null: false              |
@@ -22,8 +21,8 @@
 | price              | integer    | null: false                    |
 | postage_id         | integer    | null: false                    |
 | explanation        | text       | null: false                    |
-| status_id          | string     | null: false                    |
-| area_id            | string     | null: false                    |
+| status_id          | integer    | null: false                    |
+| area_id            | integer    | null: false                    |
 | days_id            | integer    | null: false                    |
 | category_id        | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
