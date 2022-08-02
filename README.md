@@ -1,24 +1,56 @@
-# README
+## usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column             | Type   | Options                  |
+| nickname           | string | null: false              |
+| email              | string | null: false,unique: true |
+| encrypted_password | string | null: false              |
+| first_name         | string | null: false              |
+| family_name        | string | null: false              |
+| first_name_kana    | string | null: false              |
+| family_name_kana   | string | null: false              |
+| birth_date         | date   | null: false              |
 
-Things you may want to cover:
+### Association
+- has_many :items
+- has_many :purchases
 
-* Ruby version
+## itemsテーブル
 
-* System dependencies
+| Column             | Type       | Options                        |
+| name               | string     | null: false                    |
+| price              | integer    | null: false                    |
+| postage_id         | integer    | null: false                    |
+| explanation        | text       | null: false                    |
+| status_id          | integer    | null: false                    |
+| area_id            | integer    | null: false                    |
+| days_id            | integer    | null: false                    |
+| category_id        | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
-* Configuration
+### Association
+- belongs_to :user
+- has_one :purchase
 
-* Database creation
+###　purchasesテーブル
 
-* Database initialization
+| Column             | Type       | Options                        |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
+- belong_to :user
+- belong_to :item
+- has_one :address
 
-* Services (job queues, cache servers, search engines, etc.)
+## addressesテーブル
+| Column             | Type       | Option                         |
+| postal_code        | string     | null: false                    |
+| area_id            | integer    | null: false                    |
+| municipalities     | string     | null: false                    |
+| address            | string     | null: false                    |
+| building_name      | string     |                                |
+| phone_number       | integer    | null: false                    |
+| purchase           | references | null: false, foreign_key: true |
 
-* Deployment instructions
-
-* ...
+### Association
+- belong_to :purchase
