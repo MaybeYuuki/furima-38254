@@ -26,7 +26,7 @@
 | area_id            | string     | null: false                    |
 | days_id            | integer    | null: false                    |
 | category_id        | integer    | null: false                    |
-| user               | references | null: false, foreign_key: true |
+| user_id            | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
