@@ -1,15 +1,15 @@
 require 'rails_helper'
 RSpec.describe User, type: :model do
-    before do
-      @user = FactoryBot.build(:user)
-    end
-  describe "ユーザー新規登録" do
-    it "nicknameが空だと登録できない" do
+  before do
+    @user = FactoryBot.build(:user)
+  end
+  describe 'ユーザー新規登録' do
+    it 'nicknameが空だと登録できない' do
       @user.nickname = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Nickname can't be blank")
     end
-    it "emailが空では登録できない" do
+    it 'emailが空では登録できない' do
       @user.email = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Email can't be blank")
@@ -35,7 +35,7 @@ RSpec.describe User, type: :model do
       @user.password = '123456'
       @user.encrypted_password = '1234567'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password Include both letters and number")
+      expect(@user.errors.full_messages).to include('Password Include both letters and number')
     end
     it 'パスワードが5文字以下では登録できない' do
       @user.password = 'aaaaa'
@@ -75,7 +75,7 @@ RSpec.describe User, type: :model do
     end
     it '苗字のフリガナは平仮名は使えない' do
       @user.first_name_kana = 'たなか'
-      @user.valid?  
+      @user.valid?
       expect(@user.errors.full_messages).to include('First name kana Full-width katakana characters')
     end
     it '苗字のフリガナは漢字は使えない' do

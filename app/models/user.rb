@@ -17,9 +17,8 @@ class User < ApplicationRecord
     validates :family_name_kana
   end
 
-  
   validates :email, presence: true, format: { with: /\A\S+@\S+\.\S+\z/, message: "can't be blank" }
-  
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'Include both letters and number' }
 end
