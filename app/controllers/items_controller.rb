@@ -19,6 +19,14 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name,:price,:postage_id,:category_id,:explanation,:status_id,:area_id,:days_id,)
+    params.require(:item).permit(:image,:name,:price,:postage_id,:category_id,:explanation,:status_id,:area_id,:days_id,).merge(user_id: current_user.id)
+  end
+
+  def require_login
+    redirect_to user_session_path, alert: 'You need to sign in or sign up before continuing.' unless user_signed_in?
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
