@@ -122,13 +122,14 @@
 
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
-    <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
+    <div class="subtitle" >
+      新規投稿商品
+    </div>
     <ul class='item-lists'>
 
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <% @items.each do |item| %>
       <li class='list'>
-        <%= link_to items_path(item.id) do %>
+        <%= link_to "#" do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
@@ -154,7 +155,6 @@
         <% end %>
       </li>
         <% end %>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
 
       <% if @items[0] == nil %>
         <li class='list'>
@@ -175,8 +175,7 @@
           <% end %>
         </li>
       <% end %>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+      
     </ul>
   </div>
   <%# /商品一覧 %>
