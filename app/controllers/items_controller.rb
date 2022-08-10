@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :require_login, only: :new, alert: 'You need to sign in or sign up before continuing.'
-  before_action :set_item, only: [:show, ]
+  before_action :set_item, only: [:show, :edit, :update]
+  before_action :authenticate_user!, except: [:index, :show]
+  
   def index
     @items = Item.order('created_at DESC')
   end
@@ -21,7 +23,20 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def edit
+    if @item.user_id != current_user.id
+      redirect_to root_path
+    end
+  end
 
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+  
   private
 
   def item_params
