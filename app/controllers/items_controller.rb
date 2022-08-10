@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :require_login, only: :new, alert: 'You need to sign in or sign up before continuing.'
-
+  before_action :set_item, only: [:show, ]
   def index
     @items = Item.order('created_at DESC')
   end
@@ -17,6 +17,10 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
+  def show
+  end
+
 
   private
 
