@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :require_login, only: :new, alert: 'You need to sign in or sign up before continuing.'
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :destroy]
   
   def index
     @items = Item.order('created_at DESC')
@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to root_path
     else
-      redirect :show
+      render :show
     end
   end
 
