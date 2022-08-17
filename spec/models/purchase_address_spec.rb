@@ -23,7 +23,6 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     context '内容に問題ある場合' do
-
       it '郵便番号がないと登録できない' do
         @purchase.postal_code = ''
         @purchase.valid?

@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :require_login, only: :new, alert: 'You need to sign in or sign up before continuing.'
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  
+
   def index
     @items = Item.order('created_at DESC')
   end
@@ -24,13 +24,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.user_id != current_user.id || @item.purchase != nil
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.user_id != current_user.id || !@item.purchase.nil?
   end
 
   def update
-    @item.user_id != current_user.id || @item.purchase != nil
+    @item.user_id != current_user.id || !@item.purchase.nil?
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -48,7 +46,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  
   private
 
   def item_params
