@@ -1,0 +1,33 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        birth_date: 誕生日
+        first_name: 苗字
+        family_name: 名前
+        first_name_kana: 苗字のカナ
+        family_name_kana: 名前のカナ
+      item:
+        category_id: カテゴリー
+        image: 画像
+        status_id: 商品の状態
+        area_id: 発送元の地域
+        postage_id: 送料の負担
+        days_id: 発送までの日付
+        name: 商品名
+        price: 販売価格
+        select: 選択して下さい
+        explanation: 商品の説明
+        half-width_number: 半角数字
+      
+  activemodel:
+    attributes:
+      purchase_address:
+        token: トークン
+        municipalities: 市区町村
+        area_id: 都道府県
+        postal_code: 郵便番号
+        phone_number: 電話番号
+        address: 番地
+
