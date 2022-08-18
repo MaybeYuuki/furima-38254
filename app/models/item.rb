@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to :days
   has_one_attached :image
 
-  with_options numericality: { other_than: 0, message: 'select' } do
+  with_options numericality: { other_than: 0, message: '選択して下さい' } do
     validates :category_id
     validates :status_id
     validates :area_id
@@ -30,6 +30,6 @@ class Item < ApplicationRecord
     validates :category_id
   end
 
-  validates :price, format: { with: /\A[0-9]+\z/, message: 'Price Half-width number' },
-                    inclusion: { in: (300..9_999_999), message: 'Out of setting range' }
+  validates :price, format: { with: /\A[0-9]+\z/, message: '半角数字で入力して下さい' },
+                    inclusion: { in: (300..9_999_999), message: 'の制限金額以内で入力して下さい' }
 end
